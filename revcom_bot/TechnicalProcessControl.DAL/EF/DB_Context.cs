@@ -47,7 +47,7 @@ namespace TechnicalProcessControl.DAL.EF
             csb = new FbConnectionStringBuilder()
             {
                 DataSource = "localhost",
-                Database = "TECHDATABASEDB",
+                Database = "TelegramBotDB",
                 UserID = "SYSDBA",
                 Password = "masterkey",
                 Charset = "UTF8",
@@ -61,7 +61,7 @@ namespace TechnicalProcessControl.DAL.EF
             csb = new FbConnectionStringBuilder()
             {
                 DataSource = "localhost",
-                Database = "TechDatabaseDb",
+                Database = "TelegramBotDB",
                 UserID = "SYSDBA",
                 Password = "masterkey",
                 Charset = "UTF8",
