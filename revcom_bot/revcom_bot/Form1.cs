@@ -1,4 +1,5 @@
-﻿using revcom_bot.Models;
+﻿using Ninject;
+using revcom_bot.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,12 +10,14 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TechnicalProcessControl.BLL.Interfaces;
 
 namespace revcom_bot
 {
     public partial class Form1 : Form
     {
         BackgroundWorker bw;
+        public IBotService botService;
 
         public Form1()
         {
@@ -33,6 +36,8 @@ namespace revcom_bot
 
         async void bw_DoWork(object sender, DoWorkEventArgs e)
         {
+
+
             var worker = sender as BackgroundWorker;
             var key = e.Argument as String; // получаем ключ из аргументов
             try
@@ -122,26 +127,14 @@ namespace revcom_bot
                         if (message.Text == "/getmenu")
                         {
                             // в ответ на команду /getimage выводим картинку
-                            var dish1 = new Dish();
-                            dish1.Name = "Golubtsi";
-                            dish1.Image = "https://www.koolinar.ru/all_image/recipes/145/145511/recipe_364d4cd5-421a-4e35-93f5-34748438c804_large.jpg";
-                            dish1.Description = "Голубцы без сметаны";
+                            var data = botService.GetTelegramDishes();
 
-                            var dish2 = new Dish();
-                            dish2.Name = "Borshch";
-                            dish2.Image = "https://www.delonghi.com/Global/recipes/multifry/512.jpg";
-                            dish2.Description = "Борщ со сметной";
-
-                            List<Dish> Dishes = new List<Dish>();
-                            Dishes.Add(dish1);
-                            Dishes.Add(dish2);
-
-                            foreach(var dish in Dishes)
+                            foreach (var element in data)
                             {
-                                await Bot.SendPhotoAsync(message.Chat.Id, dish.Image, $"Имя:{dish.Name}, Описание:{dish.Description}.");
+                                await Bot.SendTextMessageAsync(message.Chat.Id, $"Название блюда: {element.NAME} \nОписание: {element.DESCRIPTION} \nЦена: {element.PRICE}");
                             }
-                            
-                            
+
+                            //await Bot.SendPhotoAsync(message.Chat.Id, dish.Image, $"Имя:{dish.Name}, Описание:{dish.Description}.");                            
                         }
 
                         // inline buttons
@@ -203,14 +196,21 @@ namespace revcom_bot
 
         }
 
+
         private void BtnRun_Click(object sender, EventArgs e)
         {
+            botService = Program.kernel.Get<IBotService>();
+
             var text = @txtKey.Text; // получаем содержимое текстового поля txtKey в переменную text
             if (text != "" && this.bw.IsBusy != true)
             {
                 this.bw.RunWorkerAsync(text); // передаем эту переменную в виде аргумента методу bw_DoWork
                 BtnRun.Text = "Бот запущен...";
             }
+            /*using (var context = new MyDbContext)
+            {
+                
+            }*/
         }
     }
 }

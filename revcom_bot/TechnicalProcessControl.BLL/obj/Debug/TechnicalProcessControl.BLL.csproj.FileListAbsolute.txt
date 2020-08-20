@@ -1,0 +1,50 @@
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TechnicalProcessControl-master\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.csprojAssemblyReference.cache
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TechnicalProcessControl-master\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.csproj.CoreCompileInputs.cache
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.csproj.CoreCompileInputs.cache
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.BLL.dll
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.BLL.pdb
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\AutoMapper.dll
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\Ninject.dll
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\SpreadsheetGear.dll
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.DAL.dll
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.dll
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\AutoMapper.xml
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\Ninject.xml
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.DAL.pdb
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.DAL.dll.config
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.xml
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\FirebirdSql.Data.FirebirdClient.pdb
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.csproj.CopyComplete
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.dll
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.pdb
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.BLL.dll.config
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.Firebird.dll
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.Firebird.pdb
+D:\Smth else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.csprojAssemblyReference.cache
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.BLL.dll.config
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.BLL.dll
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.BLL.pdb
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\AutoMapper.dll
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.dll
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.Firebird.dll
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\FirebirdSql.Data.FirebirdClient.dll
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\Ninject.dll
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\SpreadsheetGear.dll
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.DAL.dll
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\AutoMapper.xml
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.xml
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.Firebird.pdb
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\FirebirdSql.Data.FirebirdClient.pdb
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\Ninject.xml
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.DAL.pdb
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\bin\Debug\TechnicalProcessControl.DAL.dll.config
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.csproj.CoreCompileInputs.cache
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.csproj.CopyComplete
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.dll
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.pdb
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.BLL\obj\Debug\TechnicalProcessControl.BLL.csprojAssemblyReference.cache

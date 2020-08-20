@@ -1,4 +1,5 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
+using revcom_bot.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using TechnicalProcessControl.DAL.Models;
@@ -24,7 +25,7 @@ namespace TechnicalProcessControl.DAL.EF
         public DbSet<Contractors> Contractors { get; set; }
         public DbSet<City> City { get; set; }
         public DbSet<Rules> Rules { get; set; }
-
+        public DbSet<DISHES> DISHES { get; set; }
         public DbSet<Drawings> Drawings { get; set; }
         public DbSet<Details> Details { get; set; }
         public DbSet<Type> Type { get; set; }
