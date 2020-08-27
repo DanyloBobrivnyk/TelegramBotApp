@@ -36,3 +36,4 @@ D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\Technic
 D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.DAL\obj\Debug\TechnicalProcessControl.DAL.csproj.CopyComplete
 D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.DAL\obj\Debug\TechnicalProcessControl.DAL.dll
 D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.DAL\obj\Debug\TechnicalProcessControl.DAL.pdb
+D:\Smth_else\GitCatalogProgrm\Telegram_Bot_App\TelegramBotApp\revcom_bot\TechnicalProcessControl.DAL\obj\Debug\TechnicalProcessControl.DAL.csprojAssemblyReference.cache

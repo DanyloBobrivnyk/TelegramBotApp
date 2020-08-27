@@ -11,10 +11,11 @@ namespace revcom_bot.Models
     {
         [Key]
         public int ID { get; set; }
-        public string NAME { get; set; }
-        public string DESCRIPTION { get; set; }
-        public decimal PRICE { get; set; }
-        public byte[]  PHOTO { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public byte[]  Photo { get; set; }
+        public string Filename { get; set; }
 
        /* public string Realize(Dish dish, TelegramBotClient bot)
         {

@@ -328,6 +328,32 @@ namespace TechnicalProcessControl.BLL.Services
 
 
 
+        #region Dishes CRUD method's
+        public int DishCreate(DishDTO dishDTO)
+        {
+            var createDish = dishesTelegram.Create(mapper.Map<DISHES>(dishDTO));
+            return (int)createDish.ID;
+        }
+
+        public void DishUpdate(DishDTO dishDTO)
+        {
+            var updateDish = dishesTelegram.GetAll().SingleOrDefault(c => c.ID == dishDTO.ID);
+            dishesTelegram.Update((mapper.Map<DishDTO, DISHES>(dishDTO, updateDish)));
+        }
+
+        public bool DishDelete(int id)
+        {
+            try
+            {
+                dishesTelegram.Delete(dishesTelegram.GetAll().FirstOrDefault(c => c.ID == id));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
 
         #region Contractor's CRUD method's
 
@@ -609,9 +635,6 @@ namespace TechnicalProcessControl.BLL.Services
             }
         }
         #endregion
-
-
-
 
     }
 }

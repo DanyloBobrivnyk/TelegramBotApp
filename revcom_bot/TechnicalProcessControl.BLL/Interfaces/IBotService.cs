@@ -29,6 +29,13 @@ namespace TechnicalProcessControl.BLL.Interfaces
 
         UsersTelegramDTO GetTelegramUserByUserTelegramId(long userTelegramId);
 
+        #region Dishes CRUD
+        int DishCreate(DishDTO dishDTO);
+        void DishUpdate(DishDTO dishDTO);
+        bool DishDelete(int id);
+     
+        #endregion
+
         #region Contractor CRUD
         int ContractorCreate(ContractorsDTO contractorDTO);
         void ContractorUpdate(ContractorsDTO contractorDTO);
