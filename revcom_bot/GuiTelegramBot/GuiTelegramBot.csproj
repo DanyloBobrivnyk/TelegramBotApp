@@ -115,6 +115,12 @@
     <Compile Include="AddDishForm.Designer.cs">
       <DependentUpon>AddDishForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddServiceForm.Designer.cs">
+      <DependentUpon>AddServiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_TelegramBot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddDishForm.resx">
       <DependentUpon>AddDishForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddServiceForm.resx">
+      <DependentUpon>AddServiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_TelegramBot.resx">
       <DependentUpon>GUI_TelegramBot.cs</DependentUpon>
@@ -152,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Source\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

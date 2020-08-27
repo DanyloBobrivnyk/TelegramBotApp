@@ -8,6 +8,9 @@ using TechnicalProcessControl.BLL.Interfaces;
 using Ninject;
 using TechnicalProcessControl.BLL.ModelsDTO;
 using TechnicalProcessControl.BLL.Infrastructure;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.Utils;
+using System.Drawing.Drawing2D;
 
 namespace GuiTelegramBot
 {
@@ -22,11 +25,18 @@ namespace GuiTelegramBot
         {
             InitializeComponent();
 
+
+            LoadData();
+        }
+
+        public void LoadData()
+        {
             botService = Program.kernel.Get<IBotService>();
 
             dishBS.DataSource = botService.GetTelegramDishes();
             dishesGrid.DataSource = dishBS;
-
+            //dishesGridView.Columns["Description"].AppearanceCell.TextOptions.Trimming = Trimming.Character;
+            //dishesGridView.Columns["Description"].AppearanceCell.TextOptions.WordWrap = WordWrap.Wrap;
 
         }
 
@@ -43,15 +53,15 @@ namespace GuiTelegramBot
             {
                 if (addDishForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    //DetailsDTO return_Id = detailsEditFm.Return();
-                    //detailsGridView.BeginDataUpdate();
-                    //LoadData();
-                    //detailsGridView.EndDataUpdate();
-                    //int rowHandle = detailsGridView.LocateByValue("Id", return_Id.Id);
-                    //detailsGridView.FocusedRowHandle = rowHandle;
-
+                    DishDTO return_Id = addDishForm.Return();
+                    dishesGridView.BeginDataUpdate();
+                    LoadData();
+                    dishesGridView.EndDataUpdate();
+                    int rowHandle = dishesGridView.LocateByValue("ID", return_Id.ID);
+                    dishesGridView.FocusedRowHandle = rowHandle;
                 }
             }
+            
             //AddDishForm form = new AddDishForm();
             //form.ShowDialog();
         }

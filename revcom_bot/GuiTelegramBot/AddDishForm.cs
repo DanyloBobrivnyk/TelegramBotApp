@@ -163,6 +163,11 @@ namespace GuiTelegramBot
             this.Close();
         }
 
+        public DishDTO Return()
+        {
+            return ((DishDTO)Item);
+        }
+
         private void simpleButton2_Click(object sender, EventArgs e)
         {
 

@@ -137,6 +137,7 @@
             this.Controls.Add(this.textDishDescription);
             this.Controls.Add(this.textDishName);
             this.Controls.Add(this.labelAddDIsh);
+            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.Name = "AddDishForm";
             this.Text = "AddDishForm";
             ((System.ComponentModel.ISupportInitialize)(this.textDishName.Properties)).EndInit();

@@ -42,6 +42,7 @@
             this.dishesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnDishName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.gridColumnDishPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDishPhoto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemPictureEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
@@ -49,6 +50,7 @@
             this.panelTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dishesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dishesGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +71,7 @@
             this.ribbonPage1});
             this.ribbonControlDishes.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControlDishes.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
-            this.ribbonControlDishes.Size = new System.Drawing.Size(993, 100);
+            this.ribbonControlDishes.Size = new System.Drawing.Size(1139, 100);
             this.ribbonControlDishes.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // barButtonAddDish
@@ -135,90 +137,136 @@
             this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTable.Location = new System.Drawing.Point(0, 100);
             this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(993, 350);
+            this.panelTable.Size = new System.Drawing.Size(1139, 548);
             this.panelTable.TabIndex = 1;
             // 
             // dishesGrid
             // 
+            this.dishesGrid.AllowRestoreSelectionAndFocusedRow = DevExpress.Utils.DefaultBoolean.True;
             this.dishesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dishesGrid.Location = new System.Drawing.Point(0, 0);
             this.dishesGrid.MainView = this.dishesGridView;
             this.dishesGrid.MenuManager = this.ribbonControlDishes;
             this.dishesGrid.Name = "dishesGrid";
             this.dishesGrid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemPictureEdit});
-            this.dishesGrid.Size = new System.Drawing.Size(993, 350);
+            this.repositoryItemPictureEdit,
+            this.repositoryItemMemoEdit});
+            this.dishesGrid.Size = new System.Drawing.Size(1139, 548);
             this.dishesGrid.TabIndex = 0;
             this.dishesGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dishesGridView});
             // 
             // dishesGridView
             // 
+            this.dishesGridView.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.dishesGridView.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.dishesGridView.Appearance.Row.Options.UseTextOptions = true;
+            this.dishesGridView.Appearance.Row.TextOptions.Trimming = DevExpress.Utils.Trimming.Word;
+            this.dishesGridView.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.dishesGridView.Appearance.SelectedRow.Options.UseTextOptions = true;
+            this.dishesGridView.Appearance.SelectedRow.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.dishesGridView.Appearance.ViewCaption.Options.UseTextOptions = true;
+            this.dishesGridView.Appearance.ViewCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.dishesGridView.AppearancePrint.Row.Options.UseTextOptions = true;
+            this.dishesGridView.AppearancePrint.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.dishesGridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.dishesGridView.ColumnPanelRowHeight = 10;
             this.dishesGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumnDishName,
             this.gridColumnDescription,
             this.gridColumnDishPrice,
             this.gridColumnDishPhoto});
+            this.dishesGridView.DetailHeight = 50;
+            this.dishesGridView.DetailVerticalIndent = 2;
             this.dishesGridView.GridControl = this.dishesGrid;
+            this.dishesGridView.GroupRowHeight = 20;
+            this.dishesGridView.LevelIndent = 2;
             this.dishesGridView.Name = "dishesGridView";
-            this.dishesGridView.RowHeight = 300;
+            this.dishesGridView.OptionsView.RowAutoHeight = true;
+            this.dishesGridView.PreviewIndent = 2;
+            this.dishesGridView.PreviewLineCount = 2;
+            this.dishesGridView.RowHeight = 128;
             this.dishesGridView.RowSeparatorHeight = 2;
-            this.dishesGridView.ViewCaptionHeight = 20;
+            this.dishesGridView.ViewCaptionHeight = 30;
             // 
             // gridColumnDishName
             // 
+            this.gridColumnDishName.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridColumnDishName.AppearanceCell.Options.UseFont = true;
             this.gridColumnDishName.Caption = "Name";
+            this.gridColumnDishName.ColumnEdit = this.repositoryItemMemoEdit;
             this.gridColumnDishName.FieldName = "Name";
             this.gridColumnDishName.Name = "gridColumnDishName";
             this.gridColumnDishName.OptionsColumn.AllowEdit = false;
             this.gridColumnDishName.OptionsColumn.AllowFocus = false;
             this.gridColumnDishName.Visible = true;
             this.gridColumnDishName.VisibleIndex = 0;
-            this.gridColumnDishName.Width = 146;
+            this.gridColumnDishName.Width = 200;
             // 
             // gridColumnDescription
             // 
+            this.gridColumnDescription.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridColumnDescription.AppearanceCell.Options.UseFont = true;
+            this.gridColumnDescription.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnDescription.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.gridColumnDescription.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridColumnDescription.AppearanceHeader.Options.UseFont = true;
+            this.gridColumnDescription.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnDescription.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.gridColumnDescription.Caption = "Description";
+            this.gridColumnDescription.ColumnEdit = this.repositoryItemMemoEdit;
             this.gridColumnDescription.FieldName = "Description";
+            this.gridColumnDescription.MinWidth = 100;
             this.gridColumnDescription.Name = "gridColumnDescription";
             this.gridColumnDescription.OptionsColumn.AllowEdit = false;
             this.gridColumnDescription.OptionsColumn.AllowFocus = false;
             this.gridColumnDescription.Visible = true;
             this.gridColumnDescription.VisibleIndex = 1;
-            this.gridColumnDescription.Width = 266;
+            this.gridColumnDescription.Width = 500;
+            // 
+            // repositoryItemMemoEdit
+            // 
+            this.repositoryItemMemoEdit.Appearance.Options.UseTextOptions = true;
+            this.repositoryItemMemoEdit.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.repositoryItemMemoEdit.Name = "repositoryItemMemoEdit";
             // 
             // gridColumnDishPrice
             // 
+            this.gridColumnDishPrice.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gridColumnDishPrice.AppearanceCell.Options.UseFont = true;
             this.gridColumnDishPrice.Caption = "Price";
             this.gridColumnDishPrice.FieldName = "Price";
+            this.gridColumnDishPrice.MaxWidth = 100;
             this.gridColumnDishPrice.Name = "gridColumnDishPrice";
             this.gridColumnDishPrice.OptionsColumn.AllowEdit = false;
             this.gridColumnDishPrice.OptionsColumn.AllowFocus = false;
             this.gridColumnDishPrice.Visible = true;
             this.gridColumnDishPrice.VisibleIndex = 2;
-            this.gridColumnDishPrice.Width = 72;
+            this.gridColumnDishPrice.Width = 100;
             // 
             // gridColumnDishPhoto
             // 
             this.gridColumnDishPhoto.Caption = "Photo";
             this.gridColumnDishPhoto.ColumnEdit = this.repositoryItemPictureEdit;
             this.gridColumnDishPhoto.FieldName = "Photo";
+            this.gridColumnDishPhoto.MaxWidth = 284;
             this.gridColumnDishPhoto.Name = "gridColumnDishPhoto";
             this.gridColumnDishPhoto.UnboundType = DevExpress.Data.UnboundColumnType.Object;
             this.gridColumnDishPhoto.Visible = true;
             this.gridColumnDishPhoto.VisibleIndex = 3;
-            this.gridColumnDishPhoto.Width = 484;
+            this.gridColumnDishPhoto.Width = 284;
             // 
             // repositoryItemPictureEdit
             // 
+            this.repositoryItemPictureEdit.InitialImageOptions.SvgImageSize = new System.Drawing.Size(40, 40);
             this.repositoryItemPictureEdit.Name = "repositoryItemPictureEdit";
+            this.repositoryItemPictureEdit.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             // 
             // GUI_TelegramBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 450);
+            this.ClientSize = new System.Drawing.Size(1139, 648);
             this.Controls.Add(this.panelTable);
             this.Controls.Add(this.ribbonControlDishes);
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("GUI_TelegramBot.IconOptions.SvgImage")));
@@ -229,6 +277,7 @@
             this.panelTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dishesGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dishesGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -253,5 +302,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDishPrice;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDishPhoto;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit;
     }
 }
