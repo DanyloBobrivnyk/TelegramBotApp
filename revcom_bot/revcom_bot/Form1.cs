@@ -131,7 +131,7 @@ namespace revcom_bot
 
                             foreach (var element in data)
                             {
-                                await Bot.SendTextMessageAsync(message.Chat.Id, $"Название блюда: {element.NAME} \nОписание: {element.DESCRIPTION} \nЦена: {element.PRICE}");
+                                await Bot.SendTextMessageAsync(message.Chat.Id, $"Название блюда: {element.Name} \nОписание: {element.Description} \nЦена: {element.Price}");
                             }
 
                             //await Bot.SendPhotoAsync(message.Chat.Id, dish.Image, $"Имя:{dish.Name}, Описание:{dish.Description}.");                            

@@ -16,5 +16,7 @@ namespace TechnicalProcessControl.BLL.ModelsDTO
         public byte[] Photo { get; set; }
 
         public string Filename { get; set; }
+
+        public bool Checked { get; set; }
     }
 }

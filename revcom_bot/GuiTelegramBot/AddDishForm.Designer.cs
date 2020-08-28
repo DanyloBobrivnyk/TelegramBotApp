@@ -33,9 +33,9 @@
             this.textDishDescription = new DevExpress.XtraEditors.TextEdit();
             this.textDishPrice = new DevExpress.XtraEditors.TextEdit();
             this.scanPictureEdit = new DevExpress.XtraEditors.PictureEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.CancelButton = new DevExpress.XtraEditors.SimpleButton();
             this.saveBtn = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.UploadButton = new DevExpress.XtraEditors.SimpleButton();
             this.fileNameEdit = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.textDishName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textDishDescription.Properties)).BeginInit();
@@ -86,14 +86,14 @@
             this.scanPictureEdit.Size = new System.Drawing.Size(347, 262);
             this.scanPictureEdit.TabIndex = 6;
             // 
-            // simpleButton1
+            // CancelButton
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(495, 339);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 7;
-            this.simpleButton1.Text = "Cancel";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.CancelButton.Location = new System.Drawing.Point(495, 339);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 7;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // saveBtn
             // 
@@ -104,14 +104,14 @@
             this.saveBtn.Text = "Save";
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
-            // simpleButton3
+            // UploadButton
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(495, 306);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton3.TabIndex = 9;
-            this.simpleButton3.Text = "Upload";
-            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            this.UploadButton.Location = new System.Drawing.Point(495, 306);
+            this.UploadButton.Name = "UploadButton";
+            this.UploadButton.Size = new System.Drawing.Size(75, 23);
+            this.UploadButton.TabIndex = 9;
+            this.UploadButton.Text = "Upload";
+            this.UploadButton.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // fileNameEdit
             // 
@@ -129,9 +129,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 374);
             this.Controls.Add(this.fileNameEdit);
-            this.Controls.Add(this.simpleButton3);
+            this.Controls.Add(this.UploadButton);
             this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.scanPictureEdit);
             this.Controls.Add(this.textDishPrice);
             this.Controls.Add(this.textDishDescription);
@@ -157,9 +157,9 @@
         private DevExpress.XtraEditors.TextEdit textDishDescription;
         private DevExpress.XtraEditors.TextEdit textDishPrice;
         private DevExpress.XtraEditors.PictureEdit scanPictureEdit;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton CancelButton;
         private DevExpress.XtraEditors.SimpleButton saveBtn;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton UploadButton;
         private DevExpress.XtraEditors.TextEdit fileNameEdit;
     }
 }

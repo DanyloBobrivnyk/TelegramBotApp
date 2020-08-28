@@ -41,17 +41,20 @@
             this.dishesGrid = new DevExpress.XtraGrid.GridControl();
             this.dishesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnDishName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.gridColumnDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDishPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDishPhoto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemPictureEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
+            this.checkCol = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlDishes)).BeginInit();
             this.panelTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dishesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dishesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControlDishes
@@ -107,6 +110,7 @@
             this.barButtonService.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonService.ImageOptions.SvgImage")));
             this.barButtonService.Name = "barButtonService";
             this.barButtonService.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonService.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonService_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -137,7 +141,7 @@
             this.panelTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTable.Location = new System.Drawing.Point(0, 100);
             this.panelTable.Name = "panelTable";
-            this.panelTable.Size = new System.Drawing.Size(1139, 548);
+            this.panelTable.Size = new System.Drawing.Size(1139, 782);
             this.panelTable.TabIndex = 1;
             // 
             // dishesGrid
@@ -150,8 +154,9 @@
             this.dishesGrid.Name = "dishesGrid";
             this.dishesGrid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPictureEdit,
-            this.repositoryItemMemoEdit});
-            this.dishesGrid.Size = new System.Drawing.Size(1139, 548);
+            this.repositoryItemMemoEdit,
+            this.repositoryItemCheckEdit});
+            this.dishesGrid.Size = new System.Drawing.Size(1139, 782);
             this.dishesGrid.TabIndex = 0;
             this.dishesGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.dishesGridView});
@@ -175,17 +180,17 @@
             this.gridColumnDishName,
             this.gridColumnDescription,
             this.gridColumnDishPrice,
-            this.gridColumnDishPhoto});
+            this.gridColumnDishPhoto,
+            this.checkCol});
             this.dishesGridView.DetailHeight = 50;
             this.dishesGridView.DetailVerticalIndent = 2;
             this.dishesGridView.GridControl = this.dishesGrid;
             this.dishesGridView.GroupRowHeight = 20;
             this.dishesGridView.LevelIndent = 2;
             this.dishesGridView.Name = "dishesGridView";
-            this.dishesGridView.OptionsView.RowAutoHeight = true;
             this.dishesGridView.PreviewIndent = 2;
             this.dishesGridView.PreviewLineCount = 2;
-            this.dishesGridView.RowHeight = 128;
+            this.dishesGridView.RowHeight = 120;
             this.dishesGridView.RowSeparatorHeight = 2;
             this.dishesGridView.ViewCaptionHeight = 30;
             // 
@@ -201,7 +206,13 @@
             this.gridColumnDishName.OptionsColumn.AllowFocus = false;
             this.gridColumnDishName.Visible = true;
             this.gridColumnDishName.VisibleIndex = 0;
-            this.gridColumnDishName.Width = 200;
+            this.gridColumnDishName.Width = 213;
+            // 
+            // repositoryItemMemoEdit
+            // 
+            this.repositoryItemMemoEdit.Appearance.Options.UseTextOptions = true;
+            this.repositoryItemMemoEdit.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.repositoryItemMemoEdit.Name = "repositoryItemMemoEdit";
             // 
             // gridColumnDescription
             // 
@@ -222,13 +233,7 @@
             this.gridColumnDescription.OptionsColumn.AllowFocus = false;
             this.gridColumnDescription.Visible = true;
             this.gridColumnDescription.VisibleIndex = 1;
-            this.gridColumnDescription.Width = 500;
-            // 
-            // repositoryItemMemoEdit
-            // 
-            this.repositoryItemMemoEdit.Appearance.Options.UseTextOptions = true;
-            this.repositoryItemMemoEdit.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.repositoryItemMemoEdit.Name = "repositoryItemMemoEdit";
+            this.gridColumnDescription.Width = 460;
             // 
             // gridColumnDishPrice
             // 
@@ -249,12 +254,12 @@
             this.gridColumnDishPhoto.Caption = "Photo";
             this.gridColumnDishPhoto.ColumnEdit = this.repositoryItemPictureEdit;
             this.gridColumnDishPhoto.FieldName = "Photo";
-            this.gridColumnDishPhoto.MaxWidth = 284;
+            this.gridColumnDishPhoto.MaxWidth = 220;
             this.gridColumnDishPhoto.Name = "gridColumnDishPhoto";
             this.gridColumnDishPhoto.UnboundType = DevExpress.Data.UnboundColumnType.Object;
             this.gridColumnDishPhoto.Visible = true;
             this.gridColumnDishPhoto.VisibleIndex = 3;
-            this.gridColumnDishPhoto.Width = 284;
+            this.gridColumnDishPhoto.Width = 173;
             // 
             // repositoryItemPictureEdit
             // 
@@ -262,11 +267,29 @@
             this.repositoryItemPictureEdit.Name = "repositoryItemPictureEdit";
             this.repositoryItemPictureEdit.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             // 
+            // checkCol
+            // 
+            this.checkCol.Caption = "Selected for Service";
+            this.checkCol.ColumnEdit = this.repositoryItemCheckEdit;
+            this.checkCol.FieldName = "Checked";
+            this.checkCol.Name = "checkCol";
+            this.checkCol.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
+            this.checkCol.Visible = true;
+            this.checkCol.VisibleIndex = 4;
+            this.checkCol.Width = 168;
+            // 
+            // repositoryItemCheckEdit
+            // 
+            this.repositoryItemCheckEdit.AllowGrayed = true;
+            this.repositoryItemCheckEdit.AutoHeight = false;
+            this.repositoryItemCheckEdit.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgCheckBox1;
+            this.repositoryItemCheckEdit.Name = "repositoryItemCheckEdit";
+            // 
             // GUI_TelegramBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 648);
+            this.ClientSize = new System.Drawing.Size(1139, 882);
             this.Controls.Add(this.panelTable);
             this.Controls.Add(this.ribbonControlDishes);
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("GUI_TelegramBot.IconOptions.SvgImage")));
@@ -279,6 +302,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dishesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +327,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDishPhoto;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit;
+        public DevExpress.XtraGrid.Columns.GridColumn checkCol;
     }
 }

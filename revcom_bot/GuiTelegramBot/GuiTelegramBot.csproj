@@ -121,6 +121,12 @@
     <Compile Include="AddServiceForm.Designer.cs">
       <DependentUpon>AddServiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditServiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditServiceForm.Designer.cs">
+      <DependentUpon>EditServiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_TelegramBot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddServiceForm.resx">
       <DependentUpon>AddServiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditServiceForm.resx">
+      <DependentUpon>EditServiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_TelegramBot.resx">
       <DependentUpon>GUI_TelegramBot.cs</DependentUpon>
