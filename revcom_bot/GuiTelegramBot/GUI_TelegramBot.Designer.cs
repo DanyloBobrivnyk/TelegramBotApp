@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_TelegramBot));
             this.ribbonControlDishes = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonAddDish = new DevExpress.XtraBars.BarButtonItem();
@@ -37,6 +38,7 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupDishesOperationsMngr = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupServiceManager = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.panelTable = new System.Windows.Forms.Panel();
             this.dishesGrid = new DevExpress.XtraGrid.GridControl();
             this.dishesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -48,6 +50,7 @@
             this.repositoryItemPictureEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.checkCol = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlDishes)).BeginInit();
             this.panelTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dishesGrid)).BeginInit();
@@ -55,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControlDishes
@@ -116,7 +120,8 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroupDishesOperationsMngr,
-            this.ribbonPageGroupServiceManager});
+            this.ribbonPageGroupServiceManager,
+            this.ribbonPageGroup1});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "ribbonPage1";
             // 
@@ -134,6 +139,11 @@
             this.ribbonPageGroupServiceManager.ItemLinks.Add(this.barButtonService);
             this.ribbonPageGroupServiceManager.Name = "ribbonPageGroupServiceManager";
             this.ribbonPageGroupServiceManager.Text = "Service Panel";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
             // panelTable
             // 
@@ -284,6 +294,7 @@
             this.repositoryItemCheckEdit.AutoHeight = false;
             this.repositoryItemCheckEdit.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgCheckBox1;
             this.repositoryItemCheckEdit.Name = "repositoryItemCheckEdit";
+            this.repositoryItemCheckEdit.Click += new System.EventHandler(this.repositoryItemCheckEdit_Click);
             // 
             // GUI_TelegramBot
             // 
@@ -303,6 +314,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,5 +341,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit;
         public DevExpress.XtraGrid.Columns.GridColumn checkCol;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
     }
 }

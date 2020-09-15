@@ -6,13 +6,19 @@ using Ninject;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace GuiTelegramBot
 {
     public partial class AddServiceForm : XtraForm
     {
         public BindingSource dishBS = new BindingSource();
+
+        public BindingSource dateBS = new BindingSource();
+
         public Utils.Operation operation;
+
+        public DateTime currentDate = DateTime.Now;
 
         private ObjectBase Item
         {
@@ -24,23 +30,35 @@ namespace GuiTelegramBot
             }
         }
 
-        public AddServiceForm(Utils.Operation operation, List<DishDTO> SelectedDishes)
+        public AddServiceForm(Utils.Operation operation, List<DishDTO> SelectedDishes, List<DateDTO> ServiceDates)
         {
             InitializeComponent();
 
             dishBS.DataSource = SelectedDishes;
 
-            DishesGridControl.DataSource = dishBS;
+            Edit_Service_Date.EditValue = currentDate;
 
-           
-            /* textDishName.DataBindings.Add("EditValue", dishBS, "Name", true, DataSourceUpdateMode.OnPropertyChanged);
+            Grid_Cntrl_Dishes.DataSource = dishBS;
+            
+            /*textDishName.DataBindings.Add("EditValue", dishBS, "Name", true, DataSourceUpdateMode.OnPropertyChanged);
              textDishDescription.DataBindings.Add("EditValue", dishBS, "Description", true, DataSourceUpdateMode.OnPropertyChanged);
              textDishPrice.DataBindings.Add("EditValue", dishBS, "Price", true, DataSourceUpdateMode.OnPropertyChanged);*/
         }
 
         public void LoadSelectedDishes()
         {
-            DishesGridControl.DataSource = dishBS;
+            Grid_Cntrl_Dishes.DataSource = dishBS;
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (EditServiceForm editServiceForm = new EditServiceForm((List<DishDTO>)dishBS.DataSource))
+            {
+                if (editServiceForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+
+                }
+            }
         }
     }
 }

@@ -8,8 +8,8 @@ namespace TechnicalProcessControl.BLL.Interfaces
     {
         IEnumerable<DishDTO> GetTelegramDishes();
         IEnumerable<DishDTO> GetTelegramBots();
+        IEnumerable<DateDTO> GetTelegramDates();
         IEnumerable<UsersTelegramDTO> GetTelegramBotUsers(int telegramBotId);
-
         IEnumerable<RoutesDTO> GetAllRoutes();
 
         IEnumerable<CityDTO> GetAllCity();

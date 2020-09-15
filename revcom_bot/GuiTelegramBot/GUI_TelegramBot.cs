@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Windows.Forms;
-using DevExpress.ExpressApp;
-using DevExpress.ExpressApp.Actions;
 using DevExpress.XtraEditors;
 using TechnicalProcessControl.BLL.Interfaces;
 using Ninject;
@@ -13,6 +11,7 @@ using DevExpress.Utils;
 using System.Drawing.Drawing2D;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 
 namespace GuiTelegramBot
 {
@@ -20,25 +19,28 @@ namespace GuiTelegramBot
     {
 
         public IBotService botService; 
-        public BindingSource dishBS = new BindingSource();
-        public List<DishDTO> SelectedDishes = new List<DishDTO>();
 
+        public BindingSource dishBS = new BindingSource();
+        public BindingSource dateBS = new BindingSource();
+
+        public List<DishDTO> SelectedDishes = new List<DishDTO>();
+        public List<DateDTO> SerivceDatesList = new List<DateDTO>();
         public GUI_TelegramBot()
         {
             InitializeComponent();
 
 
-            LoadData();
+            LoadData(dishBS, dishesGrid);
         }
 
-        public void LoadData()
+        public void LoadData(BindingSource bindingSource, DevExpress.XtraGrid.GridControl gridCntrl)
         {
             //dishesGridView.BeginDataUpdate();
             
             botService = Program.kernel.Get<IBotService>();
 
-            dishBS.DataSource = botService.GetTelegramDishes();
-            dishesGrid.DataSource = dishBS;
+            bindingSource.DataSource = botService.GetTelegramDishes();
+            gridCntrl.DataSource = bindingSource;
 
             //dishesGridView.EndDataUpdate();
         }
@@ -58,7 +60,7 @@ namespace GuiTelegramBot
                 {
                     DishDTO return_Id = addDishForm.Return();
                     dishesGridView.BeginDataUpdate();
-                    LoadData();
+                    LoadData(dishBS, dishesGrid);
                     dishesGridView.EndDataUpdate();
                     int rowHandle = dishesGridView.LocateByValue("ID", return_Id.ID);
                     dishesGridView.FocusedRowHandle = rowHandle;
@@ -92,7 +94,7 @@ namespace GuiTelegramBot
             dishesGridView.PostEditor();
             SelectedDishes = ((List<DishDTO>)dishBS.DataSource).Where(s => s.Checked).ToList();
 
-            using (AddServiceForm addSericeForm = new AddServiceForm(Utils.Operation.Add, SelectedDishes))
+            using (AddServiceForm addSericeForm = new AddServiceForm(Utils.Operation.Add, SelectedDishes, SerivceDatesList))
             {
                 if (addSericeForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -105,6 +107,11 @@ namespace GuiTelegramBot
                     dishesGridView.FocusedRowHandle = rowHandle;*/
                 }
             }
+        }
+
+        private void repositoryItemCheckEdit_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

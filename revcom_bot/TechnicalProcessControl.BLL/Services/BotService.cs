@@ -25,6 +25,7 @@ namespace TechnicalProcessControl.BLL.Services
         private IRepository<Rules> rules;
         private IRepository<Messages> messages;
         private IRepository<DISHES> dishesTelegram;
+        private IRepository<Dates> datesTelegram;
 
 
         private IMapper mapper;
@@ -38,6 +39,7 @@ namespace TechnicalProcessControl.BLL.Services
             telegramBot = Database.GetRepository<TelegramBot>();
             usersTelegram = Database.GetRepository<UsersTelegram>();
             dishesTelegram = Database.GetRepository<DISHES>();
+            datesTelegram = Database.GetRepository<Dates>();
             textTelegram = Database.GetRepository<TextTelegram>();
             city = Database.GetRepository<City>();
             routes = Database.GetRepository<Routes>();
@@ -72,6 +74,8 @@ namespace TechnicalProcessControl.BLL.Services
                 cfg.CreateMap<MessagesDTO, Messages>();
                 cfg.CreateMap<DISHES, DishDTO>();
                 cfg.CreateMap<DishDTO, DISHES>();
+                cfg.CreateMap<Dates, DateDTO>();
+                cfg.CreateMap<DateDTO, Dates>();
             });
 
             mapper = config.CreateMapper();
@@ -80,6 +84,11 @@ namespace TechnicalProcessControl.BLL.Services
         {
             return mapper.Map<IEnumerable<DISHES>, List<DishDTO>>(dishesTelegram.GetAll());
         }
+        public IEnumerable<DateDTO> GetTelegramDates()
+        {
+            return mapper.Map<IEnumerable<Dates>, List<DateDTO>>(datesTelegram.GetAll());
+        }
+
         public IEnumerable<DishDTO> GetTelegramBots()
         {
             return mapper.Map<IEnumerable<TelegramBot>, List<DishDTO>>(telegramBot.GetAll());
@@ -325,7 +334,6 @@ namespace TechnicalProcessControl.BLL.Services
 
             return newBool;
         }
-
 
 
         #region Dishes CRUD method's

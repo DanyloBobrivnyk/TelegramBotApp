@@ -77,6 +77,7 @@
     <Compile Include="Interfaces\IReportService.cs" />
     <Compile Include="ModelsDTO\CityDTO.cs" />
     <Compile Include="ModelsDTO\ContractorsDTO.cs" />
+    <Compile Include="ModelsDTO\DateDTO.cs" />
     <Compile Include="ModelsDTO\DetailsDTO.cs" />
     <Compile Include="ModelsDTO\DishDTO.cs" />
     <Compile Include="ModelsDTO\DrawingScanDTO.cs" />

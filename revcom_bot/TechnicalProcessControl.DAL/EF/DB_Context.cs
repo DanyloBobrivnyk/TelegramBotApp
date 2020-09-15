@@ -26,6 +26,7 @@ namespace TechnicalProcessControl.DAL.EF
         public DbSet<City> City { get; set; }
         public DbSet<Rules> Rules { get; set; }
         public DbSet<DISHES> DISHES { get; set; }
+        public DbSet<Dates> Dates { get; set; }
         public DbSet<Drawings> Drawings { get; set; }
         public DbSet<Details> Details { get; set; }
         public DbSet<Type> Type { get; set; }
