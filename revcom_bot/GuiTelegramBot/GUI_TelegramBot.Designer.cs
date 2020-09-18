@@ -105,6 +105,7 @@
             this.barButtonRemoveDish.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonRemoveDish.ImageOptions.SvgImage")));
             this.barButtonRemoveDish.Name = "barButtonRemoveDish";
             this.barButtonRemoveDish.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonRemoveDish.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonRemoveDish_ItemClick);
             // 
             // barButtonService
             // 

@@ -30,19 +30,15 @@ namespace GuiTelegramBot
             InitializeComponent();
 
 
-            LoadData(dishBS, dishesGrid);
+            LoadData();
         }
 
-        public void LoadData(BindingSource bindingSource, DevExpress.XtraGrid.GridControl gridCntrl)
+        public void LoadData()
         {
-            //dishesGridView.BeginDataUpdate();
-            
             botService = Program.kernel.Get<IBotService>();
 
-            bindingSource.DataSource = botService.GetTelegramDishes();
-            gridCntrl.DataSource = bindingSource;
-
-            //dishesGridView.EndDataUpdate();
+            dishBS.DataSource = botService.GetTelegramDishes();
+            dishesGrid.DataSource = dishBS;
         }
 
         private void GUI_TelegramBot_Load(object sender, EventArgs e)
@@ -60,7 +56,7 @@ namespace GuiTelegramBot
                 {
                     DishDTO return_Id = addDishForm.Return();
                     dishesGridView.BeginDataUpdate();
-                    LoadData(dishBS, dishesGrid);
+                    LoadData();
                     dishesGridView.EndDataUpdate();
                     int rowHandle = dishesGridView.LocateByValue("ID", return_Id.ID);
                     dishesGridView.FocusedRowHandle = rowHandle;
@@ -112,6 +108,19 @@ namespace GuiTelegramBot
         private void repositoryItemCheckEdit_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void barButtonRemoveDish_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            botService = Program.kernel.Get<IBotService>();
+
+            botService.DishDelete(((DishDTO)dishBS.Current).ID);
+
+            dishesGridView.BeginDataUpdate();
+            LoadData();
+            dishesGridView.EndDataUpdate();
+
         }
     }
 }

@@ -56,24 +56,6 @@ namespace GuiTelegramBot
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SaveDate();
-
-            /*using (EditServiceForm editServiceForm = new EditServiceForm((List<DishDTO>)dishBS.DataSource))
-            {
-                if (editServiceForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    List<DishDTO> localBuffer = editServiceForm.updatedListSelectedDishes;
-
-                    foreach (var item in localBuffer)
-                    {
-                        bufferDishesList.Add(item);
-                    }
-
-                    Grid_Cntrl_Dates.BeginUpdate();                
-                    Grid_Cntrl_Dates.DataSource = bufferDishesList;
-                    Grid_Cntrl_Dates.EndUpdate();
-                }
-            }*/
-
         }
 
         public bool SaveDate()
@@ -83,8 +65,6 @@ namespace GuiTelegramBot
 
             if (Edit_Service_Date.EditValue != null)
             {
-
-
                 if (botService.CheckDate((DateTime)Edit_Service_Date.EditValue))
                     MessageBox.Show("");
                 else
@@ -152,13 +132,56 @@ namespace GuiTelegramBot
         {
             botService = Program.kernel.Get<IBotService>();
 
-
             if (dateBS.Count>0)
             {
                 servicesBS.DataSource = botService.GetServiceDTOByDateId(((DateDTO)dateBS.Current).Id);
                 gridControlDishesInService.DataSource = servicesBS;
 
             }
+        }
+
+        private void barButtonDeleteService_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            botService.DateDelete(((DateDTO)dateBS.Current).Id);
+            gridView2.BeginUpdate();
+            dateBS.MoveLast();
+            LoadDataDate();
+            gridView2.EndUpdate();
+            
+        }
+
+        private void barBtnAddDish_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            List<int> bufferDishesIdList = new List<int>();
+            foreach (var item in (List<ServiceDTO>)servicesBS.DataSource)
+            {
+                bufferDishesIdList.Add(item.Dish_Id);
+            }
+
+            using (EditServiceForm editServiceForm = new EditServiceForm((DateDTO)dateBS.Current, bufferDishesIdList))
+            {
+                if (editServiceForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+
+                    gridView1.BeginDataUpdate();
+
+                    servicesBS.DataSource = botService.GetServiceDTOByDateId(((DateDTO)dateBS.Current).Id);
+                    gridControlDishesInService.DataSource = servicesBS;
+
+                    gridView1.EndDataUpdate();
+
+                }
+            }
+        }
+
+        private void barBtnDeleteDish_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            botService.ServiceUpdate(((ServiceDTO)servicesBS.Current).Dish_Id, ((DateDTO)dateBS.Current).Id);
+            gridView1.BeginUpdate();
+            servicesBS.DataSource = botService.GetServiceDTOByDateId(((DateDTO)dateBS.Current).Id);
+            gridControlDishesInService.DataSource = servicesBS;
+            gridView1.EndUpdate();
         }
     }
 }

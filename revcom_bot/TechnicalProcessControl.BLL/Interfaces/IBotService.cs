@@ -12,7 +12,7 @@ namespace TechnicalProcessControl.BLL.Interfaces
 
         IEnumerable<DishDTO> GetDishByDateId(int dateId);
         bool CheckDate(DateTime currentDate);
-
+        IEnumerable<ServiceDTO> GetServiceDishesByDate(DateTime dateParametr);
         IEnumerable<ServiceDTO> GetServiceDTOByDateId(int dateId);
         IEnumerable<DishDTO> GetTelegramBots();
         IEnumerable<UsersTelegramDTO> GetTelegramBotUsers(int telegramBotId);
@@ -37,7 +37,7 @@ namespace TechnicalProcessControl.BLL.Interfaces
 
         #region Services CRUD
         int ServiceCreate(ServiceDTO serviceDTO);
-        void ServiceUpdate(ServiceDTO serviceDTO);
+        bool ServiceUpdate(int serviceDTOId, int dateId);
         bool ServiceDelete(int id);
         #endregion
 

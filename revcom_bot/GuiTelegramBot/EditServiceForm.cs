@@ -13,30 +13,31 @@ namespace GuiTelegramBot
     public partial class EditServiceForm : XtraForm
     {
         public IBotService botService;
-
+        
         public BindingSource dishBS = new BindingSource();
-
+        
+        int idToSave;
+        
         public List<DishDTO> updatedListSelectedDishes = new List<DishDTO>();
+        public List<DishDTO> bufferDishesList = new List<DishDTO>();
 
-        public EditServiceForm(List<DishDTO> selectedDishesList)
+        public EditServiceForm(DateDTO dateDTO, List<int> dishDTOs)
         {
             InitializeComponent();
 
-            //LoadData(selectedDishesList, dishesGrid);
+            LoadData(dishesGrid, dishDTOs);
+            idToSave = dateDTO.Id;
         }
 
-        public void LoadData(List<DishDTO> selectedDishesList, DevExpress.XtraGrid.GridControl gridCntrl)
+        public void LoadData(DevExpress.XtraGrid.GridControl gridCntrl, List<int> selectedDishDTOs)
         {
             botService = Program.kernel.Get<IBotService>();
 
             dishBS.DataSource = botService.GetTelegramDishes();
-
-            List<DishDTO> bufferDishesList = new List<DishDTO>();
-            List<DishDTO> notSelectedDishesList = ((List<DishDTO>)dishBS.DataSource);
             
-            foreach (DishDTO item in notSelectedDishesList)
+            foreach (var item in (List<DishDTO>)dishBS.DataSource)
             { 
-                if (selectedDishesList.All(bdsm => bdsm.ID != item.ID))
+                if (selectedDishDTOs.All(bdsm => bdsm != item.ID))
                     bufferDishesList.Add(item);
             }
 
@@ -44,18 +45,24 @@ namespace GuiTelegramBot
             gridCntrl.DataSource = dishBS;
         }
 
-        private void BtnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
-            
-            updatedListSelectedDishes = ((List<DishDTO>)dishBS.DataSource).Where(s => s.Checked).ToList();
+            dishesGridView.PostEditor();
+            bufferDishesList = ((List<DishDTO>)dishBS.DataSource).Where(s => s.Checked).ToList();
+            List<ServiceDTO> serviceDTOs = new List<ServiceDTO>();
+            foreach (var item in bufferDishesList)
+            {
+                botService.ServiceCreate(new ServiceDTO
+                {
+                    Date_Id = idToSave,
+                    Dish_Id = item.ID
+                }); 
+            }
             DialogResult = DialogResult.OK;
+            MessageBox.Show("Dishes was added to service.");
             this.Close();
         }
 
-
-        private void dropDownButton1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TechnicalProcessControl.BLL.Interfaces;
+using TechnicalProcessControl.BLL.ModelsDTO;
 
 namespace revcom_bot
 {
@@ -127,13 +128,13 @@ namespace revcom_bot
                         if (message.Text == "/getmenu")
                         {
                             // в ответ на команду /getimage выводим картинку
-                            var data = botService.GetTelegramDishes();
-
-                            foreach (var element in data)
+                            DateTime currentDate = DateTime.Today;
+                            List<ServiceDTO> serviceDTOs = new List<ServiceDTO>();
+                            serviceDTOs = (List<ServiceDTO>)botService.GetServiceDishesByDate(currentDate);
+                            foreach (var item in serviceDTOs)
                             {
-                                await Bot.SendTextMessageAsync(message.Chat.Id, $"Название блюда: {element.Name} \nОписание: {element.Description} \nЦена: {element.Price}");
+                                await Bot.SendTextMessageAsync(message.Chat.Id,$"Имя:{item.Name}\nОписание:{item.Description}\nЦена:{item.Price}.");
                             }
-
                             //await Bot.SendPhotoAsync(message.Chat.Id, dish.Image, $"Имя:{dish.Name}, Описание:{dish.Description}.");                            
                         }
 

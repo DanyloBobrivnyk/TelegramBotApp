@@ -104,6 +104,29 @@ namespace TechnicalProcessControl.BLL.Services
             return mapper.Map<IEnumerable<Dates>, List<DateDTO>>(datesTelegram.GetAll()).Any(bdsm => bdsm.Service_Dates.Value.Date == currentDate.Date);
         }
 
+        public IEnumerable<ServiceDTO> GetServiceDishesByDate(DateTime dateParametr)
+        {
+            var result = (from set in servicesTelegram.GetAll()
+                          join date in datesTelegram.GetAll() on set.Date_Id equals date.Id into datee
+                          from date in datee.DefaultIfEmpty()
+                          join dish in dishesTelegram.GetAll() on set.Dish_Id equals dish.ID into dishh
+                          from dish in dishh.DefaultIfEmpty()
+                          where date.Service_Dates == dateParametr
+                          select new ServiceDTO
+                          {
+                              Id = set.Id,
+                              Date_Id = set.Date_Id,
+                              Dish_Id = set.Dish_Id,
+                              Name = dish.Name,
+                              Description = dish.Description,
+                              Price = dish.Price,
+                              Photo = dish.Photo,
+                              Filename = dish.Filename
+                          }).ToList();
+
+            return result;
+        }
+
         public IEnumerable<ServiceDTO> GetServiceDTOByDateId(int dateId)
         {
             var result = (from set in servicesTelegram.GetAll()
@@ -294,13 +317,6 @@ namespace TechnicalProcessControl.BLL.Services
             return filterResul;
         }
 
-
-
-
-
-
-        
-
         public int? GetProductionId(string productionName)
         {
 
@@ -398,11 +414,18 @@ namespace TechnicalProcessControl.BLL.Services
             return (int)createService.Id;
         }
 
-        public void ServiceUpdate (ServiceDTO serviceDTO)
+        public bool ServiceUpdate (int serviceDTOId, int dateId)
         {
-            var updateService = servicesTelegram.GetAll().SingleOrDefault(c => c.Dish_Id == serviceDTO.Dish_Id);
-            //servicesTelegram.Update((mapper.Map<ServiceDTO, DAL.Models.Services>(serviceDTO, updateService)));
-            //Не совсем уверен, что в этом есть смысл, я просто переписал эту функцию как в блюдах. Нужно передlать !!! TODO !!!
+            try
+            {
+                servicesTelegram.Delete(servicesTelegram.GetAll().FirstOrDefault(c => c.Dish_Id == serviceDTOId && c.Date_Id == dateId));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
         }
 
         public bool ServiceDelete(int id)

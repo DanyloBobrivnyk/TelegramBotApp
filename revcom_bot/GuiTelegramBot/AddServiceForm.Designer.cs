@@ -150,6 +150,7 @@
             this.barButtonDeleteService.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonDeleteService.ImageOptions.SvgImage")));
             this.barButtonDeleteService.Name = "barButtonDeleteService";
             this.barButtonDeleteService.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonDeleteService.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonDeleteService_ItemClick);
             // 
             // Edit_Service_Date
             // 
@@ -178,6 +179,7 @@
             this.barBtnAddDish.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnAddDish.ImageOptions.SvgImage")));
             this.barBtnAddDish.Name = "barBtnAddDish";
             this.barBtnAddDish.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barBtnAddDish.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnAddDish_ItemClick);
             // 
             // barBtnDeleteDish
             // 
@@ -186,6 +188,7 @@
             this.barBtnDeleteDish.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnDeleteDish.ImageOptions.SvgImage")));
             this.barBtnDeleteDish.Name = "barBtnDeleteDish";
             this.barBtnDeleteDish.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barBtnDeleteDish.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnDeleteDish_ItemClick);
             // 
             // barEditItem1
             // 
