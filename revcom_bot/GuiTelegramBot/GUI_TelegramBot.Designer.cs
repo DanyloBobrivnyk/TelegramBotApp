@@ -38,7 +38,6 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupDishesOperationsMngr = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupServiceManager = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.panelTable = new System.Windows.Forms.Panel();
             this.dishesGrid = new DevExpress.XtraGrid.GridControl();
             this.dishesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -48,9 +47,9 @@
             this.gridColumnDishPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDishPhoto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemPictureEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
-            this.checkCol = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.checkCol = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlDishes)).BeginInit();
             this.panelTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dishesGrid)).BeginInit();
@@ -120,8 +119,7 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroupDishesOperationsMngr,
-            this.ribbonPageGroupServiceManager,
-            this.ribbonPageGroup1});
+            this.ribbonPageGroupServiceManager});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "ribbonPage1";
             // 
@@ -139,11 +137,6 @@
             this.ribbonPageGroupServiceManager.ItemLinks.Add(this.barButtonService);
             this.ribbonPageGroupServiceManager.Name = "ribbonPageGroupServiceManager";
             this.ribbonPageGroupServiceManager.Text = "Service Panel";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
             // panelTable
             // 
@@ -190,8 +183,7 @@
             this.gridColumnDishName,
             this.gridColumnDescription,
             this.gridColumnDishPrice,
-            this.gridColumnDishPhoto,
-            this.checkCol});
+            this.gridColumnDishPhoto});
             this.dishesGridView.DetailHeight = 50;
             this.dishesGridView.DetailVerticalIndent = 2;
             this.dishesGridView.GridControl = this.dishesGrid;
@@ -277,6 +269,14 @@
             this.repositoryItemPictureEdit.Name = "repositoryItemPictureEdit";
             this.repositoryItemPictureEdit.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             // 
+            // repositoryItemCheckEdit
+            // 
+            this.repositoryItemCheckEdit.AllowGrayed = true;
+            this.repositoryItemCheckEdit.AutoHeight = false;
+            this.repositoryItemCheckEdit.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgCheckBox1;
+            this.repositoryItemCheckEdit.Name = "repositoryItemCheckEdit";
+            this.repositoryItemCheckEdit.Click += new System.EventHandler(this.repositoryItemCheckEdit_Click);
+            // 
             // checkCol
             // 
             this.checkCol.Caption = "Selected for Service";
@@ -287,14 +287,6 @@
             this.checkCol.Visible = true;
             this.checkCol.VisibleIndex = 4;
             this.checkCol.Width = 168;
-            // 
-            // repositoryItemCheckEdit
-            // 
-            this.repositoryItemCheckEdit.AllowGrayed = true;
-            this.repositoryItemCheckEdit.AutoHeight = false;
-            this.repositoryItemCheckEdit.CheckBoxOptions.Style = DevExpress.XtraEditors.Controls.CheckBoxStyle.SvgCheckBox1;
-            this.repositoryItemCheckEdit.Name = "repositoryItemCheckEdit";
-            this.repositoryItemCheckEdit.Click += new System.EventHandler(this.repositoryItemCheckEdit_Click);
             // 
             // GUI_TelegramBot
             // 
@@ -340,8 +332,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit;
-        public DevExpress.XtraGrid.Columns.GridColumn checkCol;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        public DevExpress.XtraGrid.Columns.GridColumn checkCol;
     }
 }

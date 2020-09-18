@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using TechnicalProcessControl.BLL.Interfaces;
 using Ninject;
-using TechnicalProcessControl.BLL.Services;
 using System.Collections.Generic;
 using TechnicalProcessControl.BLL.ModelsDTO;
 using System.Linq;
@@ -17,21 +16,23 @@ namespace GuiTelegramBot
 
         public BindingSource dishBS = new BindingSource();
 
+        public List<DishDTO> updatedListSelectedDishes = new List<DishDTO>();
+
         public EditServiceForm(List<DishDTO> selectedDishesList)
         {
             InitializeComponent();
 
-            LoadData(dishBS, selectedDishesList, dishesGrid);
+            //LoadData(selectedDishesList, dishesGrid);
         }
 
-        public void LoadData(BindingSource bindingSource, List<DishDTO> selectedDishesList, DevExpress.XtraGrid.GridControl gridCntrl)
+        public void LoadData(List<DishDTO> selectedDishesList, DevExpress.XtraGrid.GridControl gridCntrl)
         {
             botService = Program.kernel.Get<IBotService>();
 
-            bindingSource.DataSource = botService.GetTelegramDishes();
+            dishBS.DataSource = botService.GetTelegramDishes();
 
-            List<DishDTO> bufferDishesList = new List<DishDTO>(); 
-            List<DishDTO> notSelectedDishesList = ((List<DishDTO>)bindingSource.DataSource);
+            List<DishDTO> bufferDishesList = new List<DishDTO>();
+            List<DishDTO> notSelectedDishesList = ((List<DishDTO>)dishBS.DataSource);
             
             foreach (DishDTO item in notSelectedDishesList)
             { 
@@ -39,8 +40,22 @@ namespace GuiTelegramBot
                     bufferDishesList.Add(item);
             }
 
-            bindingSource.DataSource = bufferDishesList;
-            gridCntrl.DataSource = bindingSource;
+            dishBS.DataSource = bufferDishesList;
+            gridCntrl.DataSource = dishBS;
+        }
+
+        private void BtnSubmit_Click(object sender, EventArgs e)
+        {
+            
+            updatedListSelectedDishes = ((List<DishDTO>)dishBS.DataSource).Where(s => s.Checked).ToList();
+            DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+
+        private void dropDownButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

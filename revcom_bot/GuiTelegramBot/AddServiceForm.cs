@@ -12,52 +12,152 @@ namespace GuiTelegramBot
 {
     public partial class AddServiceForm : XtraForm
     {
+        public BindingSource dateBS = new BindingSource();
+        public BindingSource servicesBS = new BindingSource();
         public BindingSource dishBS = new BindingSource();
 
-        public BindingSource dateBS = new BindingSource();
+        public List<DishDTO> bufferDishesList = new List<DishDTO>();
 
         public Utils.Operation operation;
 
+        public IBotService botService;
+
         public DateTime currentDate = DateTime.Now;
 
-        private ObjectBase Item
-        {
-            get { return dishBS.Current as ObjectBase; }
-            set
-            {
-                dishBS.DataSource = value;
-                value.BeginEdit();
-            }
-        }
+        //private ObjectBase Item
+        //{
+        //    get { return dishBS.Current as ObjectBase; }
+        //    set
+        //    {
+        //        dishBS.DataSource = value;
+        //        value.BeginEdit();
+        //    }
+        //}
 
-        public AddServiceForm(Utils.Operation operation, List<DishDTO> SelectedDishes, List<DateDTO> ServiceDates)
+        public AddServiceForm(Utils.Operation operation)
         {
             InitializeComponent();
 
-            dishBS.DataSource = SelectedDishes;
+            LoadDataDate();
 
-            Edit_Service_Date.EditValue = currentDate;
-
-            Grid_Cntrl_Dishes.DataSource = dishBS;
-            
             /*textDishName.DataBindings.Add("EditValue", dishBS, "Name", true, DataSourceUpdateMode.OnPropertyChanged);
              textDishDescription.DataBindings.Add("EditValue", dishBS, "Description", true, DataSourceUpdateMode.OnPropertyChanged);
              textDishPrice.DataBindings.Add("EditValue", dishBS, "Price", true, DataSourceUpdateMode.OnPropertyChanged);*/
         }
 
-        public void LoadSelectedDishes()
+        public void LoadDataDate()
         {
-            Grid_Cntrl_Dishes.DataSource = dishBS;
-        }
+            botService = Program.kernel.Get<IBotService>();
 
+            dateBS.DataSource = botService.GetTelegramDates();
+
+            Grid_Cntrl_Dates.DataSource = dateBS;
+        }
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (EditServiceForm editServiceForm = new EditServiceForm((List<DishDTO>)dishBS.DataSource))
+            SaveDate();
+
+            /*using (EditServiceForm editServiceForm = new EditServiceForm((List<DishDTO>)dishBS.DataSource))
             {
                 if (editServiceForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    List<DishDTO> localBuffer = editServiceForm.updatedListSelectedDishes;
 
+                    foreach (var item in localBuffer)
+                    {
+                        bufferDishesList.Add(item);
+                    }
+
+                    Grid_Cntrl_Dates.BeginUpdate();                
+                    Grid_Cntrl_Dates.DataSource = bufferDishesList;
+                    Grid_Cntrl_Dates.EndUpdate();
                 }
+            }*/
+
+        }
+
+        public bool SaveDate()
+        {
+
+            botService = Program.kernel.Get<IBotService>();
+
+            if (Edit_Service_Date.EditValue != null)
+            {
+
+
+                if (botService.CheckDate((DateTime)Edit_Service_Date.EditValue))
+                    MessageBox.Show("");
+                else
+                {
+                    MessageBox.Show("Гав");
+                    Grid_Cntrl_Dates.BeginUpdate();
+                    
+                    botService.DateCreate(new DateDTO()
+                    {
+                        Service_Dates = (DateTime)Edit_Service_Date.EditValue
+                    });
+                    LoadDataDate();
+
+                    Grid_Cntrl_Dates.EndUpdate();
+                }
+                    
+            }
+            return false;
+
+            //DateTime selectedDateTime = ((DateTime)Edit_Service_Date.EditValue);  
+
+            //foreach (var item in dateDTOList)
+            //{
+            //    if (dateDTOList.Any(c => c.Service_Dates.Value.Day == selectedDateTime.Day) && dateDTOList.Any(c => c.Service_Dates.Value.Month == selectedDateTime.Month))
+            //    {
+            //        MessageBox.Show("This date is already saved into the database.\nIf you want to edit existing date - choose it from the grid down below.");
+            //        return false;
+            //    }
+            //    else if(selectedDateTime == null)
+            //    {
+            //        MessageBox.Show("You must fill the data field!\nProgram can't work without any data -__-");
+            //        return false;
+            //    }
+            //    else
+            //    {
+            //        botService.DateCreate();
+            //        return true;
+            //    }
+            //}
+            //MessageBox.Show("SaveDate Function Error :(");
+            //return false;
+        }
+
+        private void Button_Accept_Window_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MessageBox.Show("Сохранить изменения?", "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    if (SaveDate())
+                    {
+                        DialogResult = DialogResult.OK;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("При сохранении возникла ошибка. " + ex.Message, "Date saving", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        
+        private void gridView2_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            botService = Program.kernel.Get<IBotService>();
+
+
+            if (dateBS.Count>0)
+            {
+                servicesBS.DataSource = botService.GetServiceDTOByDateId(((DateDTO)dateBS.Current).Id);
+                gridControlDishesInService.DataSource = servicesBS;
+
             }
         }
     }

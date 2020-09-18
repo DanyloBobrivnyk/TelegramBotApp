@@ -94,7 +94,7 @@ namespace GuiTelegramBot
             dishesGridView.PostEditor();
             SelectedDishes = ((List<DishDTO>)dishBS.DataSource).Where(s => s.Checked).ToList();
 
-            using (AddServiceForm addSericeForm = new AddServiceForm(Utils.Operation.Add, SelectedDishes, SerivceDatesList))
+            using (AddServiceForm addSericeForm = new AddServiceForm(Utils.Operation.Add))
             {
                 if (addSericeForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

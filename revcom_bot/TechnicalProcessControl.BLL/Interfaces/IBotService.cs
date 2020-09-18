@@ -7,8 +7,14 @@ namespace TechnicalProcessControl.BLL.Interfaces
     public interface IBotService
     {
         IEnumerable<DishDTO> GetTelegramDishes();
-        IEnumerable<DishDTO> GetTelegramBots();
         IEnumerable<DateDTO> GetTelegramDates();
+        IEnumerable<ServiceDTO> GetTelegramServices();
+
+        IEnumerable<DishDTO> GetDishByDateId(int dateId);
+        bool CheckDate(DateTime currentDate);
+
+        IEnumerable<ServiceDTO> GetServiceDTOByDateId(int dateId);
+        IEnumerable<DishDTO> GetTelegramBots();
         IEnumerable<UsersTelegramDTO> GetTelegramBotUsers(int telegramBotId);
         IEnumerable<RoutesDTO> GetAllRoutes();
 
@@ -29,11 +35,24 @@ namespace TechnicalProcessControl.BLL.Interfaces
 
         UsersTelegramDTO GetTelegramUserByUserTelegramId(long userTelegramId);
 
+        #region Services CRUD
+        int ServiceCreate(ServiceDTO serviceDTO);
+        void ServiceUpdate(ServiceDTO serviceDTO);
+        bool ServiceDelete(int id);
+        #endregion
+
         #region Dishes CRUD
         int DishCreate(DishDTO dishDTO);
         void DishUpdate(DishDTO dishDTO);
         bool DishDelete(int id);
-     
+
+        #endregion
+
+        #region Dates CRUD
+        int DateCreate(DateDTO dateDTO);
+        void DateUpdate(DateDTO dateDTO);
+        bool DateDelete(int id);
+
         #endregion
 
         #region Contractor CRUD

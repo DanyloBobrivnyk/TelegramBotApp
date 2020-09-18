@@ -83,6 +83,7 @@
     <Compile Include="Models\Production.cs" />
     <Compile Include="Models\Routes.cs" />
     <Compile Include="Models\Rules.cs" />
+    <Compile Include="Models\Services.cs" />
     <Compile Include="Models\TechProcess001.cs" />
     <Compile Include="Models\TechProcess002.cs" />
     <Compile Include="Models\TechProcess003.cs" />

@@ -26,7 +26,8 @@ namespace TechnicalProcessControl.BLL.Services
         private IRepository<Messages> messages;
         private IRepository<DISHES> dishesTelegram;
         private IRepository<Dates> datesTelegram;
-
+        private IRepository<DAL.Models.Services> servicesTelegram;
+        //Из-за того,что таблица и обьект называется точно так же как и Директория сервисов, приходится писать полный путь к обьекту
 
         private IMapper mapper;
 
@@ -40,6 +41,7 @@ namespace TechnicalProcessControl.BLL.Services
             usersTelegram = Database.GetRepository<UsersTelegram>();
             dishesTelegram = Database.GetRepository<DISHES>();
             datesTelegram = Database.GetRepository<Dates>();
+            servicesTelegram = Database.GetRepository<DAL.Models.Services>();
             textTelegram = Database.GetRepository<TextTelegram>();
             city = Database.GetRepository<City>();
             routes = Database.GetRepository<Routes>();
@@ -48,6 +50,7 @@ namespace TechnicalProcessControl.BLL.Services
             orders = Database.GetRepository<Orders>();
             rules = Database.GetRepository<Rules>();
             messages = Database.GetRepository<Messages>();
+            
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -76,6 +79,8 @@ namespace TechnicalProcessControl.BLL.Services
                 cfg.CreateMap<DishDTO, DISHES>();
                 cfg.CreateMap<Dates, DateDTO>();
                 cfg.CreateMap<DateDTO, Dates>();
+                cfg.CreateMap<DAL.Models.Services, ServiceDTO>();
+                cfg.CreateMap<ServiceDTO, DAL.Models.Services>();
             });
 
             mapper = config.CreateMapper();
@@ -84,9 +89,60 @@ namespace TechnicalProcessControl.BLL.Services
         {
             return mapper.Map<IEnumerable<DISHES>, List<DishDTO>>(dishesTelegram.GetAll());
         }
+        public IEnumerable<ServiceDTO> GetTelegramServices()
+        {
+            return mapper.Map<IEnumerable<DAL.Models.Services>, List<ServiceDTO>>(servicesTelegram.GetAll());
+        }
         public IEnumerable<DateDTO> GetTelegramDates()
         {
             return mapper.Map<IEnumerable<Dates>, List<DateDTO>>(datesTelegram.GetAll());
+        }
+
+        public bool CheckDate(DateTime currentDate)
+        {
+
+            return mapper.Map<IEnumerable<Dates>, List<DateDTO>>(datesTelegram.GetAll()).Any(bdsm => bdsm.Service_Dates.Value.Date == currentDate.Date);
+        }
+
+        public IEnumerable<ServiceDTO> GetServiceDTOByDateId(int dateId)
+        {
+            var result = (from set in servicesTelegram.GetAll()
+                          join dish in dishesTelegram.GetAll() on set.Dish_Id equals dish.ID into dishh
+                          from dish in dishh.DefaultIfEmpty()
+                          where set.Date_Id == dateId
+                          select new ServiceDTO
+                          {
+                                Id = set.Id,
+                                 Date_Id = set.Date_Id,
+                                 Dish_Id = set.Dish_Id,
+                                 Name = dish.Name,
+                                 Description = dish.Description,
+                                 Price = dish.Price,
+                                 Photo = dish.Photo,
+                                 Filename = dish.Filename
+                              
+                          }).ToList();
+
+            return result;
+        }
+
+        public IEnumerable<DishDTO> GetDishByDateId(int dateId)
+        {
+            var result = (from set in servicesTelegram.GetAll()
+                          join dish in dishesTelegram.GetAll() on set.Dish_Id equals dish.ID into dishh
+                          from dish in dishh.DefaultIfEmpty()
+                          where set.Date_Id == dateId
+                          select new DishDTO
+                          {
+                              ID = dish.ID,
+                              Description = dish.Description,
+                              Filename = dish.Filename,
+                              Name = dish.Name,
+                              Photo = dish.Photo,
+                              Price = dish.Price
+                          }).ToList();
+
+            return result;
         }
 
         public IEnumerable<DishDTO> GetTelegramBots()
@@ -335,6 +391,26 @@ namespace TechnicalProcessControl.BLL.Services
             return newBool;
         }
 
+        #region Services CRUD method's
+        public int ServiceCreate(ServiceDTO serviceDTO)
+        {
+            var createService = servicesTelegram.Create(mapper.Map<DAL.Models.Services>(serviceDTO));
+            return (int)createService.Id;
+        }
+
+        public void ServiceUpdate (ServiceDTO serviceDTO)
+        {
+            var updateService = servicesTelegram.GetAll().SingleOrDefault(c => c.Dish_Id == serviceDTO.Dish_Id);
+            //servicesTelegram.Update((mapper.Map<ServiceDTO, DAL.Models.Services>(serviceDTO, updateService)));
+            //Не совсем уверен, что в этом есть смысл, я просто переписал эту функцию как в блюдах. Нужно передlать !!! TODO !!!
+        }
+
+        public bool ServiceDelete(int id)
+        {
+            return false;
+            //Удалить блюдо, совершая выборку по АЙди даты и АЙди блюда. Хрен его знает как это делать на данный момент !!! TODO !!!
+        }
+        #endregion
 
         #region Dishes CRUD method's
         public int DishCreate(DishDTO dishDTO)
@@ -354,6 +430,34 @@ namespace TechnicalProcessControl.BLL.Services
             try
             {
                 dishesTelegram.Delete(dishesTelegram.GetAll().FirstOrDefault(c => c.ID == id));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region Dates CRUD method's
+        public int DateCreate(DateDTO dateDTO)
+        {
+            var createDate = datesTelegram.Create(mapper.Map<Dates>(dateDTO));
+            return (int)createDate.Id;
+        }
+
+        public void DateUpdate(DateDTO dateDTO)
+        {
+            var updateDate = datesTelegram.GetAll().SingleOrDefault(c => c.Id == dateDTO.Id);
+            //GetTelegramDates.Update((mapper.Map<DateDTO, Dates>(dateDTO, updateDate)));
+            //! TODO !
+        }
+
+        public bool DateDelete(int id)
+        {
+            try
+            {
+                datesTelegram.Delete(datesTelegram.GetAll().FirstOrDefault(c => c.Id == id));
                 return true;
             }
             catch (Exception ex)
